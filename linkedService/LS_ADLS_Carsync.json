@@ -1,0 +1,10 @@
+{
+	"name": "LS_ADLS_Carsync",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://caresyncdeproj.dfs.core.windows.net/"
+		}
+	}
+}

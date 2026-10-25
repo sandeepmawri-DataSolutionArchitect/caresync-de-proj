@@ -53,6 +53,8 @@
 						{
 							"name": "Ingest from Source to Silver",
 							"type": "ExecutePipeline",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Failed",
 							"dependsOn": [
 								{
 									"activity": "Insert In Progress Status",
@@ -104,7 +106,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "INSERT INTO ctrl.audit_log(adf_run_id, table_id, stage, status, start_time) Values (@{pipeline().parameters.adf_run_id}, @{item().table_id}, 'SOURCE_TO_SILVER','IN PROGRESS',SYSUTCDATETIME())",
+											"value": "INSERT INTO ctrl.audit_log\n(adf_run_id, table_id, stage, status, start_time) \nvalues ('@{pipeline().parameters.adf_run_id}', @{item().table_id}, 'SOURCE_TO_SILVER','IN_PROGRESS',SYSUTCDATETIME())",
 											"type": "Expression"
 										}
 									}
@@ -115,6 +117,8 @@
 						{
 							"name": "Update Failed Status",
 							"type": "Script",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Ingest from Source to Silver",

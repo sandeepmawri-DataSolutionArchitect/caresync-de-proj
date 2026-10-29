@@ -1,0 +1,33 @@
+{
+	"name": "tgr_CareSync_Daily",
+	"properties": {
+		"description": "Triggers Master pipeline which bring data from Source to landing and then performs extraction, loading and transformation of data from Bronze, Silver and then finally into Gold.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Master",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-10-29T11:52:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						5
+					]
+				}
+			}
+		}
+	}
+}

@@ -1622,7 +1622,7 @@
 			"properties": {
 				"description": "Triggers Master pipeline which bring data from Source to landing and then performs extraction, loading and transformation of data from Bronze, Silver and then finally into Gold.",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {

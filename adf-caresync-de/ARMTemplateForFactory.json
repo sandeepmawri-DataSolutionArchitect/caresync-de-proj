@@ -1614,6 +1614,45 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_KeyVault_Caresync')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tgr_CareSync_Daily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Triggers Master pipeline which bring data from Source to landing and then performs extraction, loading and transformation of data from Bronze, Silver and then finally into Gold.",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_Master",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2026-10-29T11:52:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								5
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Master')]"
+			]
 		}
 	]
 }
